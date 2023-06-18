@@ -25,10 +25,6 @@ const ShowStudent = () => {
             .then(() => {
                 Alert.alert("successful!")
             })
-            .catch(e => {
-                console.log("error: " + e);
-            })
-
         const studentData = querySnapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
