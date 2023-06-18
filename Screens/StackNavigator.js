@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Login from './Screens/Login';
-import BottomTabNavigator from './Screens/BottomTabNavigator';
-
+import WelcomePage from './WelcomePage';
+import BottomTabNavigator from './BottomTabNavigator';
+import Login from './Login';
+import Signup from './Signup';
 const Stack = createStackNavigator();
 
 const HomeStack = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Welcome" component={WelcomePage} />
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="BottomTab" component={BottomTabNavigator} />
         </Stack.Navigator>
     );

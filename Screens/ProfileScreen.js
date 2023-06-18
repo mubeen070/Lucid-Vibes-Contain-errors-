@@ -57,7 +57,7 @@ const ProfilePage = () => {
                             <SafeAreaView>
 
                                 {data.map((pin) => (
-                                    <Card id={pin.id} image={pin.image} title={pin.title} description={pin.description} />
+                                    <Card key={pin.id} image={pin.image} title={pin.title} description={pin.description} />
                                 ))}
                             </SafeAreaView>
                         </SafeAreaView>

@@ -7,14 +7,13 @@ import HomeScreen from './HomeScreen';
 import ProfilePage from './ProfileScreen';
 import Create from './Create';
 import SearchPage from './Explore';
-import ShowStudent from './ShowStudents';
-import HomeStack from '../StackNavigator';
+// import ShowStudent from './ShowStudents';
+
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
     return (
         <Tab.Navigator
-            name="BottomTab"
             screenOptions={({ route }) => ({
                 tabBarOptions: {
                     activeTintColor: 'red',
@@ -55,11 +54,12 @@ const BottomTabNavigator = () => {
             <Tab.Screen name="Home" options={{ headerTitle: "Home" }} component={HomeScreen} />
             <Tab.Screen name="Search" component={SearchPage} />
             <Tab.Screen name="Create" component={Create} />
-            <Tab.Screen name="View" component={ShowStudent} />
+            {/* <Tab.Screen name="View" component={ShowStudent} /> */}
             <Tab.Screen name="Profile" component={ProfilePage} />
 
         </Tab.Navigator >
     );
 };
+
 
 export default BottomTabNavigator;

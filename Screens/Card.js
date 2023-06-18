@@ -1,16 +1,23 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-
+import { Ionicons } from '@expo/vector-icons';
 const Card = (props) => {
 
     return (
-
-        <TouchableOpacity key={props.id} style={styles.container}>
+        <View style={styles.continer}>
             <View style={styles.pinContainer}>
-                <Image source={props.image} style={styles.image} />
+                <TouchableOpacity >
+                    <Image source={props.image} style={styles.image} />
+                </TouchableOpacity>
+                <View style={styles.iconContainer}>
+
+                    <Ionicons style={styles.icon} name='heart-outline' size={30} />
+                    <Ionicons style={styles.icon} name='chatbubble-outline' size={30} />
+                    <Ionicons style={styles.icon} name='send-outline' size={30} />
+                </View>
                 <Text style={styles.title}>{props.title}</Text>
                 <Text style={styles.description}>{props.description}</Text>
             </View>
-        </TouchableOpacity>
+        </View>
     )
 }
 
@@ -43,6 +50,14 @@ const styles = StyleSheet.create({
         color: '#888',
         marginTop: 5,
     },
+    iconContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        paddingTop: 10
+    },
+    icon: {
+        paddingEnd: 10
+    }
 });
 
 export default Card;

@@ -42,13 +42,13 @@ const SearchPage = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 10,
+        marginHorizontal: 20,
         paddingTop: 20,
     },
     searchInput: {
-        paddingVertical: 10,
+        paddingVertical: 15,
         paddingHorizontal: 20,
-        borderWidth: 1,
+        borderWidth: .3,
         borderColor: '#ccc',
         borderRadius: 20,
         marginBottom: 10,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     searchIcon: {
         width: 20,
         height: 20,
-        top: 37,
+        top: 40,
     },
     searchResults: {
         paddingTop: 10,

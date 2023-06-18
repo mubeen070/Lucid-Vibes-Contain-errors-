@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity, TextInput, Button, Alert, RefreshControl, ScrollView } from 'react-native';
+import { StyleSheet, Text, Image, View, TouchableOpacity, TextInput, Button } from 'react-native';
 import { Camera, CameraType, FlashMode } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 import * as FaceDetector from 'expo-face-detector';
-import { db } from '../DataBase.js/FirebaseConfig';
-import { doc, setDoc, getDoc, addDoc, collection } from 'firebase/firestore';
+// import { db } from '../DataBase.js/FirebaseConfig';
+// import { addDoc, collection } from 'firebase/firestore';
 
-async function writeData(formData) {
-  // await setDoc(doc(db, "Students", 'Information'), formData)
-  await addDoc(collection(db, 'Students'), formData)
-    .then(() => {
-      Alert.alert("Success")
-    })
-    .catch((err) => console.log("Error", err))
-}
+// async function writeData(formData) {
+//   // await setDoc(doc(db, "Students", 'Information'), formData)
+//   await addDoc(collection(db, 'Students'), formData)
+//     .then(() => {
+//       Alert.alert("Success")
+//     })
+//     .catch((err) => console.log(err))
+// }
 
 
 
@@ -117,7 +117,7 @@ export default function CameraScreen() {
 
   if (isCameraOpen) {
     return (
-      <View style={styles.container}>
+      <View style={styles.container2}>
         <Camera
           style={styles.camera}
           type={cameraType}
@@ -182,12 +182,6 @@ export default function CameraScreen() {
                 useNativeControls
                 resizeMode="contain"
               />
-              {/* <Video
-              source={{ uri: type2 }}
-              style={styles.preview}
-              useNativeControls
-              resizeMode="contain"
-            /> */}
             </View>
           )
         }
@@ -198,43 +192,47 @@ export default function CameraScreen() {
   }
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
- 
+    <View style={styles.container} >
+      <Text style={styles.header}>Create New Post</Text>
 
 
-        <View>
-          <TextInput
-            style={styles.inputs}
-            placeholder="Name"
-            value={formData.name}
-            onChangeText={(text) => handleChange('name', text)}
-          />
-          <TextInput
-            style={styles.inputs}
-            placeholder="Age"
-            value={formData.age}
-            onChangeText={(text) => handleChange('age', text)}
-          />
-          <TextInput
-            style={styles.inputs}
-            placeholder="Department"
-            value={formData.department}
-            onChangeText={(text) => handleChange('department', text)}
-          />
-          <Button title="Submit" onPress={handleSubmit} />
-        </View>
-        <TouchableOpacity onPress={openCamera} style={styles.cameraIcon}>
-          <Ionicons name='camera-outline' size={45} />
-        </TouchableOpacity>
-      
+      <View>
+        <TextInput
+          style={styles.inputs}
+          placeholder="Caption"
+          value={formData.name}
+          onChangeText={(text) => handleChange('Caption', text)}
+        />
+        <TextInput
+          multiline
+          numberOfLines={20}
+          style={styles.desInput}
+          placeholder="Description"
+          value={formData.age}
+          onChangeText={(text) => handleChange('description', text)}
+        />
+        <Button title="Upload" />
+      </View>
+      <TouchableOpacity onPress={openCamera} style={styles.cameraIcon}>
+        <Ionicons name='camera-outline' size={45} />
+      </TouchableOpacity>
+
     </View>
   )
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
-    justifyContent: 'center',
+    marginTop: 100,
+    alignItems: 'center'
+  },
+  container2: {
+    width: '100%',
+    height: "100%",
+  },
+  header: {
+    fontSize: 24,
+    textAlign: 'center'
   },
   camera: {
     flex: 1,
@@ -274,13 +272,21 @@ const styles = StyleSheet.create({
   },
   inputs: {
     padding: 10,
-    width: 200,
-    margin: 10,
-    borderWidth: 1,
+    width: 300,
+    margin: 6,
+    borderWidth: .3,
+    borderRadius: 10
+  },
+  desInput: {
+    height: 100,
+    width: 300,
+    padding: 10,
+    margin: 6,
+    borderWidth: .3,
     borderRadius: 10
   },
   cameraIcon: {
-    bottom: 400,
+    bottom: 280,
     left: 150,
   }
 });

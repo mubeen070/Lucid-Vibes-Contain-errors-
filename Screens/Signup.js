@@ -1,22 +1,32 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Button, TouchableOpacity } from 'react-native';
 
-export default function Login({ navigation }) {
+export default function Signup({ navigation }) {
+    const [name, setName] = useState('');
+    const [lastN, setLname] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-        // Perform login logic here
-        console.log(`Username: ${username}, Password: ${password}`);
-        navigation.navigate('BottomTab');
-
+    const handleSignup = () => {
+        //later when we'll work on backend!
+        navigation.navigate('Login');
     };
 
     return (
         <View style={styles.container}>
             <View>
-                <Text style={{ textAlign: "center", fontSize: 28, bottom: 20 }}>Vibe in!</Text>
+                <Text style={{ textAlign: "center", fontSize: 28, bottom: 20 }}>Register</Text>
             </View>
+            <TextInput
+                style={styles.input}
+                placeholder="Name"
+                onChangeText={(text) => setName(text)}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Last Name"
+                onChangeText={(text) => setLname(text)}
+            />
             <TextInput
                 style={styles.input}
                 placeholder="Username"
@@ -31,15 +41,15 @@ export default function Login({ navigation }) {
             <TouchableOpacity>
                 <Text>Forgot Password?</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
-                <Text>New User?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                <Text>Already registered?</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.buttons}>
-                <Button style={styles.buttonText} title="Login" onPress={handleLogin} />
+                <Button style={styles.buttonText} title="Sign up" onPress={handleSignup} />
             </TouchableOpacity>
 
 
-        </View>
+        </View >
     );
 }
 
